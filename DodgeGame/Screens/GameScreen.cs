@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameSystemServices;
 using System.Threading;
+using System.Media; 
 
 namespace DodgeGame
 {
@@ -24,7 +25,7 @@ namespace DodgeGame
         int heroX, heroY, heroSize, heroSpeed;
         SolidBrush heroBrush = new SolidBrush(Color.Blue);
         SolidBrush npcBrush = new SolidBrush(Color.White);
-
+        SoundPlayer player = new SoundPlayer(Properties.Resources.Game_wav);
         List<Point> npc = new List<Point>();
         Random randGen = new Random();
         int conterscore = 0; 
@@ -119,7 +120,6 @@ namespace DodgeGame
         /// </summary>
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-
             //TODO move main character 
             if (leftArrowDown == true && heroX > 0)
             {
@@ -137,12 +137,10 @@ namespace DodgeGame
             {
                 heroY = heroY - heroSpeed;
             }
-
             //TODO move npc characters
-
+            player.Play();         
             counter++;
-            conterscore++; 
-
+            conterscore++;
             for (int i = 0; i < npc.Count(); i++)
             {
                 int x = npc[i].X;
