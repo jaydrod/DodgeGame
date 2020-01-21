@@ -24,6 +24,7 @@ namespace DodgeGame
             {
                 MainForm.ChangeScreen(this, "MenuScreen");
             }
+            scoreoutputLable.Text = MainForm.conterscore + " "; 
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DodgeGame
     public partial class MainForm : Form
     {
         bool fullScreen = false;  // true: program runs fullscreen || false: program runs in window
+        public static int conterscore = 0; 
 
         public MainForm()
         {
@@ -71,6 +72,7 @@ namespace DodgeGame
                     ns = new ScoreScreen();
                     break;
             }
+  
 
             //centres the control on the screen
             ns.Location = new Point((f.Width - ns.Width) / 2, (f.Height - ns.Height) / 2);

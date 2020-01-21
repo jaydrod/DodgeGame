@@ -22,7 +22,7 @@ namespace DodgeGame
         Boolean aDown, sDown, dDown, wDown, cDown, vDown, xDown, zDown;
 
         //TODO create your global game variables here
-        int heroX, heroY, heroSize, heroSpeed;
+        int heroX, heroY, heroSize, heroSpeed, npcSpeed;
         SolidBrush heroBrush = new SolidBrush(Color.Blue);
         SolidBrush npcBrush = new SolidBrush(Color.White);
         SoundPlayer player = new SoundPlayer(Properties.Resources.Game_wav);
@@ -30,6 +30,7 @@ namespace DodgeGame
         Random randGen = new Random();
         int conterscore = 0; 
         int counter = 0;
+        int counterSpawn = 50;
 
         public GameScreen()
         {
@@ -44,8 +45,11 @@ namespace DodgeGame
             heroX = 100;
             heroY = 100;
             heroSize = 20;
-            heroSpeed = 5;
+            heroSpeed = 2;
+            npcSpeed = 1; 
             npc.Add(new Point(100, 5));
+            player.Play();
+           
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -138,19 +142,19 @@ namespace DodgeGame
                 heroY = heroY - heroSpeed;
             }
             //TODO move npc characters
-            player.Play();         
             counter++;
             conterscore++;
+
             for (int i = 0; i < npc.Count(); i++)
             {
                 int x = npc[i].X;
                 int y = npc[i].Y;
-                y++;
+                y = y + npcSpeed;
 
                 npc[i] = new Point(x, y);
             }
 
-            if (counter == 50)
+            if (counter == counterSpawn)
             {
                
                 npc.Add(new Point(randGen.Next(0, 290), 5));
@@ -161,7 +165,7 @@ namespace DodgeGame
             {
                 npc.RemoveAt(0);
             }
-            //TODO collisions checks 
+                //TODO collisions checks 
 
             Rectangle heroRec = new Rectangle(heroX, heroY, heroSize, heroSize);
 
@@ -174,15 +178,69 @@ namespace DodgeGame
                     gameTimer.Stop();
                     Thread.Sleep(1000); 
                     MainForm.ChangeScreen(this, "MenuScreen");
+                    player.Stop(); 
                 }
             }
 
-
+            GameSpeed();
             //calls the GameScreen_Paint method to draw the screen.
             Refresh();
         }
 
+        public void GameSpeed()
+        {
+            if (conterscore <= 1000)
+            {
+                npcSpeed = 2;
+                counterSpawn = 50; 
+            }
+            else if (conterscore <= 2000)
+            {
+                npcSpeed = 4;
+                counterSpawn = 40;
+            }
+            else if (conterscore <= 3000)
+            {
+                npcSpeed = 6;
+                counterSpawn = 35;
+            }
+            else if (conterscore <= 4000)
+            {
+                npcSpeed = 8;
+                counterSpawn = 30;
 
+            }
+            else if (conterscore <= 5000)
+            {
+                npcSpeed = 10;
+                counterSpawn = 25;
+            }
+            else if (conterscore <= 6000)
+            {
+                npcSpeed = 12;
+                counterSpawn = 20;
+            }
+            else if (conterscore <= 7000)
+            {
+                npcSpeed = 14;
+                counterSpawn = 15;
+            }
+            else if (conterscore <= 8000)
+            {
+                npcSpeed = 16;
+                counterSpawn = 10;
+            }
+            else if (conterscore <= 9000)
+            {
+                npcSpeed = 18;
+                counterSpawn = 5;
+            }
+            else if (conterscore <= 10000)
+            {
+                npcSpeed = 20;
+                counterSpawn = 1;
+            }
+        }
         //Everything that is to be drawn on the screen should be done here
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {

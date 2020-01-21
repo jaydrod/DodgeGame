@@ -28,20 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.scoreoutputLable = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // scoreoutputLable
+            // 
+            this.scoreoutputLable.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.scoreoutputLable.Location = new System.Drawing.Point(0, 0);
+            this.scoreoutputLable.Name = "scoreoutputLable";
+            this.scoreoutputLable.Size = new System.Drawing.Size(294, 264);
+            this.scoreoutputLable.TabIndex = 0;
             // 
             // ScoreScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.Controls.Add(this.scoreoutputLable);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ScoreScreen";
-            this.Size = new System.Drawing.Size(441, 406);
+            this.Size = new System.Drawing.Size(294, 264);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.ScoreScreen_PreviewKeyDown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label scoreoutputLable;
     }
 }
