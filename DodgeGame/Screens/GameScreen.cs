@@ -28,7 +28,7 @@ namespace DodgeGame
         SoundPlayer player = new SoundPlayer(Properties.Resources.Game_wav);
         List<Point> npc = new List<Point>();
         Random randGen = new Random();
-        int conterscore = 0; 
+
         int counter = 0;
         int counterSpawn = 50;
 
@@ -143,7 +143,7 @@ namespace DodgeGame
             }
             //TODO move npc characters
             counter++;
-            conterscore++;
+            MainForm.conterscore++;
 
             for (int i = 0; i < npc.Count(); i++)
             {
@@ -189,53 +189,53 @@ namespace DodgeGame
 
         public void GameSpeed()
         {
-            if (conterscore <= 1000)
+            if (MainForm.conterscore <= 1000)
             {
                 npcSpeed = 2;
                 counterSpawn = 50; 
             }
-            else if (conterscore <= 2000)
+            else if (MainForm.conterscore <= 2000)
             {
                 npcSpeed = 4;
                 counterSpawn = 40;
             }
-            else if (conterscore <= 3000)
+            else if (MainForm.conterscore <= 3000)
             {
                 npcSpeed = 6;
                 counterSpawn = 35;
             }
-            else if (conterscore <= 4000)
+            else if (MainForm.conterscore <= 4000)
             {
                 npcSpeed = 8;
                 counterSpawn = 30;
 
             }
-            else if (conterscore <= 5000)
+            else if (MainForm.conterscore <= 5000)
             {
                 npcSpeed = 10;
                 counterSpawn = 25;
             }
-            else if (conterscore <= 6000)
+            else if (MainForm.conterscore <= 6000)
             {
                 npcSpeed = 12;
                 counterSpawn = 20;
             }
-            else if (conterscore <= 7000)
+            else if (MainForm.conterscore <= 7000)
             {
                 npcSpeed = 14;
                 counterSpawn = 15;
             }
-            else if (conterscore <= 8000)
+            else if (MainForm.conterscore <= 8000)
             {
                 npcSpeed = 16;
                 counterSpawn = 10;
             }
-            else if (conterscore <= 9000)
+            else if (MainForm.conterscore <= 9000)
             {
                 npcSpeed = 18;
                 counterSpawn = 5;
             }
-            else if (conterscore <= 10000)
+            else if (MainForm.conterscore <= 10000)
             {
                 npcSpeed = 20;
                 counterSpawn = 1;
@@ -252,7 +252,7 @@ namespace DodgeGame
                 e.Graphics.FillRectangle(npcBrush, npc[i].X, npc[i].Y , 20, 20);
                 
             }
-            scorVarible.Text = conterscore + ""; 
+            scorVarible.Text = MainForm.conterscore + ""; 
         }
     }
 }

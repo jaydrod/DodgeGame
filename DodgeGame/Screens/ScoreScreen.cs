@@ -15,6 +15,7 @@ namespace DodgeGame
         public ScoreScreen()
         {
             InitializeComponent();
+            scoreoutputLable.Text = MainForm.conterscore + " ";
         }
 
         private void ScoreScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -24,7 +25,7 @@ namespace DodgeGame
             {
                 MainForm.ChangeScreen(this, "MenuScreen");
             }
-            scoreoutputLable.Text = MainForm.conterscore + " "; 
+            
         }
     }
 }
